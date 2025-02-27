@@ -1,0 +1,165 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "Plyxn Script Hub",
+   LoadingTitle = "Loading Plyxn Scripts...",
+   LoadingSubtitle = "Please wait",
+   Theme = "DarkBlue",
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = "PlyxnHub",
+      FileName = "Scripts"
+   },
+   KeySystem = false
+})
+
+-- MAIN SCRIPTS
+local MainTab = Window:CreateTab("Main Scripts", "code")
+
+MainTab:CreateButton({
+   Name = "Camlock",
+   Callback = function()
+       loadstring(game:HttpGet("https://raw.githubusercontent.com/1ixLin/Camlock/refs/heads/main/File"))()
+   end
+})
+
+MainTab:CreateButton({
+   Name = "Instant Transmission",
+   Callback = function()
+       loadstring(game:HttpGet("https://raw.githubusercontent.com/1ixLin/Instant-transmission/refs/heads/main/File"))()
+   end
+})
+
+MainTab:CreateButton({
+   Name = "Player Teleporter",
+   Callback = function()
+       loadstring(game:HttpGet("https://raw.githubusercontent.com/1ixLin/Player-teleportation/refs/heads/main/Alipay"))()
+   end
+})
+
+-- Add new script
+MainTab:CreateButton({
+   Name = "INF TRASH CAN [tsbg only]",
+   Callback = function()
+       loadstring(game:HttpGet("https://raw.githubusercontent.com/yes1nt/yes/refs/heads/main/Trashcan%20Man", true))()
+   end
+})
+
+-- PREMIUM SCRIPTS
+local PremiumTab = Window:CreateTab("OP Scripts", "star")
+
+local keyRequired = true
+local lastClickTime = 0
+local clickCount = 0
+
+function CheckKeyAccess()
+    local currentTime = tick()
+    if currentTime - lastClickTime < 10 then
+        clickCount = clickCount + 1
+    else
+        clickCount = 1
+    end
+    lastClickTime = currentTime
+
+    if clickCount >= 2.5 then
+        Rayfield:Notify({
+            Title = "Error",
+            Content = "Script is not working because you either didn’t do the key or the script is under development.",
+            Duration = 5
+        })
+        return false
+    end
+
+    if keyRequired then
+        ShowKeyTutorial()
+        return false
+    end
+
+    return true
+end
+
+function ShowKeyTutorial()
+    local TutorialTab = Window:CreateTab("Key Tutorial", "key")
+
+    local instructions = [[
+1. Go to <font color='#1F51FF'><b>rbx.best</b></font> by searching for it in your browser (or copy it using the button below).
+2. Click "Begin with Roblox Username."
+3. Click "Enter with Roblox Username."
+4. Type in the key username which is.....
+5. Enter <font color='#1F51FF'><b>plyxnscripthubkey</b></font> (or copy it using the button below).
+6. Complete any survey of your choice. Once done, return to the script hub to enjoy premium scripts for a week!
+]]
+
+    TutorialTab:CreateParagraph({Title = "How to Get The Key", Content = instructions})
+
+    TutorialTab:CreateButton({
+        Name = "Copy rbx.best",
+        Callback = function()
+            setclipboard("rbx.best")
+            Rayfield:Notify({
+                Title = "Copied!",
+                Content = "rbx.best has been copied to your clipboard.",
+                Duration = 5
+            })
+        end
+    })
+
+    TutorialTab:CreateButton({
+        Name = "Copy Key Username",
+        Callback = function()
+            setclipboard("plyxnscripthubkey")
+            Rayfield:Notify({
+                Title = "Copied!",
+                Content = "The key username has been copied to your clipboard.",
+                Duration = 5
+            })
+        end
+    })
+
+    TutorialTab:CreateButton({
+        Name = "Help (Guide)",
+        Callback = function()
+            setclipboard("https://imgur.com/gallery/ztwUIkI")
+            Rayfield:Notify({
+                Title = "Help Link Copied",
+                Content = "Paste in your browser to see the guide.",
+                Duration = 5
+            })
+        end
+    })
+
+    TutorialTab:CreateButton({
+        Name = "Redeem Key",
+        Callback = function()
+            keyRequired = false
+            Rayfield:Notify({
+                Title = "Success",
+                Content = "Key accepted! You now have access to premium scripts for 1 week.",
+                Duration = 5
+            })
+        end
+    })
+end
+
+-- PREMIUM SCRIPT BUTTONS
+local function createPremiumScript(name, description)
+   PremiumTab:CreateButton({
+      Name = name,
+      Callback = function()
+         Rayfield:Notify({
+            Title = name,
+            Content = description .. "\n\nThis is a premium script and requires a key. Follow the guide to obtain a key.",
+            Duration = 10
+         })
+         if not CheckKeyAccess() then return end
+         -- Run the script here if key is redeemed (Currently no scripts provided for these)
+      end
+   })
+end
+
+createPremiumScript("Extreme Player Farmer", "Automatically teleports to enemies and kills them effortlessly, farming kills and leaderboard points.")
+createPremiumScript("Hitbox Expander", "Increases the range of your attacks, making it easier to hit enemies even if they are slightly out of range.")
+createPremiumScript("Aimbot", "Auto-locks onto enemies, ensuring every shot is a perfect hit without the need for manual aiming.")
+createPremiumScript("Auto Block", "Automatically blocks incoming attacks when an enemy is close. Ends when you attack.")
+createPremiumScript("Anti Die", "Prevents the player from dying by automatically blocking damage or healing when necessary.")
+createPremiumScript("Chat Bypass", "Allows sending messages that would normally be censored, bypassing chat filters.")
