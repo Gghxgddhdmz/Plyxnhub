@@ -3,9 +3,9 @@ local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 local Window = Rayfield:CreateWindow({
    Name = "KAXROB SCRIPT",
    Icon = 89329261427843, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
-   LoadingTitle = "SCRIPT LOKAS HUB",
+   LoadingTitle = "SCRIPT KAXROB HUB",
    LoadingSubtitle = "KAXROB HUB",
-   Theme = "Ocean", -- Check https://docs.sirius.menu/rayfield/configuration/themes
+   Theme = "DARKBlue", -- Check https://docs.sirius.menu/rayfield/configuration/themes
 
    DisableRayfieldPrompts = false,
    DisableBuildWarnings = false, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
@@ -13,7 +13,7 @@ local Window = Rayfield:CreateWindow({
    ConfigurationSaving = {
       Enabled = true,
       FolderName = nil, -- Create a custom folder for your hub/game
-      FileName = "SCRIPT LOKAS HUB"
+      FileName = "SCRIPT KAXROB HUB"
    },
 
    Discord = {
@@ -35,8 +35,8 @@ local Window = Rayfield:CreateWindow({
 })
 
 Rayfield:Notify({
-   Title = "LOKAS HUB",
-   Content = "SCRIPTTTT LOKAS HUB",
+   Title = "KAXROB HUB",
+   Content = "SCRIPTTTT KAXROB HUB",
    Duration = 5,
    Image = 110139412486838,
 })
@@ -214,3 +214,49 @@ local args = {
 local Button = Tab:CreateButton({
    Name = "KARITAH",
    Callback = function()
+}
+})
+local args = {
+    [1] = "🄺🄰🅁🄴🅃🄷🄰",
+    [2] = "🄺🄰🅁🄴🅃🄷🄰"
+}
+  end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Y̴̒̿Ó̴͊U̷͐͋",
+   Callback = function()
+}
+})
+local args = {
+    [1] = "Y̴̒̿Ó̴͊U̷͐͋",
+    [2] = "Y̴̒̿Ó̴͊U̷͐͋"
+}
+  end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "ⱤØ฿ɆⱤ₮Ø",
+   Callback = function()
+}
+})
+local args = {
+    [1] = "ⱤØ฿ɆⱤ₮Ø",
+    [2] = "ⱤØ฿ɆⱤ₮Ø"
+}
+  end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "‽★$̶́̾",
+   Callback = function()
+}
+})
+local args = {
+    [1] = "‽★$̶́̾",
+    [2] = "‽★$̶́̾"
+}
+  end,
+})
+
+Rayfield:Destroy()
